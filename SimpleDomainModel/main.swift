@@ -14,7 +14,8 @@
 
 import Foundation
 
-print("Hello, World!1234")
+
+print("Hello, World!")
 
 public func testMe() -> String {
   return "I have been tested"
@@ -49,7 +50,7 @@ public struct Money {
     }
     
     private func convertHelper(_ from: String, _ to: String) -> Int {
-        return Int(self.amount * Int(self.conversions[from]![to]!))
+        return Int((Double(self.amount) * self.conversions[from]![to]!).rounded(.up))
     }
     
     public func add(_ to: Money) -> Money {
@@ -72,24 +73,24 @@ public struct Money {
 
 
 
-//let oneUSD = Money(amount: 1, currency: "USD")
-////print(oneUSD.amount)
-//let tenGBP = Money(amount: 10, currency: "GBP")
-////print(tenGBP.convert("USD").amount)
-//
-//let tenUSD = Money(amount: 10, currency: "USD")
-//let yolo = Money(amount: 20, currency: "GBP")
-//
-//
-//print(yolo.amount)
-//
-//print(tenUSD.amount)
-//print(yolo.convert("USD").amount)
-//
-//
-//
-//print(tenUSD.subtract(yolo).amount)
+let tenUSD = Money(amount: 10, currency: "USD")
+let twelveUSD = Money(amount: 12, currency: "USD")
+let fiveGBP = Money(amount: 5, currency: "GBP")
+let fifteenEUR = Money(amount: 15, currency: "EUR")
+let fifteenCAN = Money(amount: 15, currency: "CAN")
 
+
+print(tenUSD.amount)
+print(tenUSD.convert("GBP").amount)
+
+let eur = tenUSD.convert("EUR")
+print(eur.amount)
+
+let can = twelveUSD.convert("CAN")
+print(can.amount)
+
+let usd = fifteenEUR.convert("USD")
+print(usd.amount)
 
 //
 //////////////////////////////////////
